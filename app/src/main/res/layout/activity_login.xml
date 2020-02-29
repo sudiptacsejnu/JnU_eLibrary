@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/wallpaper">
+
+    <EditText
+        android:id="@+id/EmailIDEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Email ID"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp"
+        android:inputType="textEmailAddress">
+    </EditText>
+
+    <EditText
+        android:id="@+id/PasswordEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Password"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp"
+        android:inputType="textPassword">
+    </EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Login"
+        android:onClick="Login">
+    </Button>
+
+    <ProgressBar
+        android:id="@+id/Progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
+
+    </ProgressBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forget Password?"
+        android:textColor="@color/colorWhite"
+        android:onClick="Forget_password">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register here"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="100dp"
+        android:onClick="Register_now">
+    </TextView>
+
+</LinearLayout>

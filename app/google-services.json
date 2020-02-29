@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "720484047939",
+    "firebase_url": "https://jnu-elibrary.firebaseio.com",
+    "project_id": "jnu-elibrary",
+    "storage_bucket": "jnu-elibrary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720484047939:android:1ef010f381ae5a497008f6",
+        "android_client_info": {
+          "package_name": "com.example.jnuelibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720484047939-o7idqucskkll8ius6h75hm05cvr6tnj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jnuelibrary",
+            "certificate_hash": "0cbd62c3914ae2dcc78d7bb568e5c182c144972a"
+          }
+        },
+        {
+          "client_id": "720484047939-fg64r0vroucl0b8r4v52o25fav902b2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWUdEuLqZiU8p_uRRqAMN26qL4XRR_8yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720484047939-fg64r0vroucl0b8r4v52o25fav902b2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/wallpaper">
+
+    <EditText
+        android:id="@+id/NameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Name"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp">
+    </EditText>
+    <EditText
+        android:id="@+id/StudentIDET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Student ID"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp">
+    </EditText>
+    <EditText
+        android:id="@+id/EmailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Email"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp"
+        android:inputType="textEmailAddress">
+    </EditText>
+    <EditText
+        android:id="@+id/PasswordET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Password"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/ContactET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Contact no"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="12dp"
+        android:inputType="phone">
+    </EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_margin="10dp"
+        android:onClick="Submit">
+
+    </Button>
+
+    <ProgressBar
+        android:id="@+id/Progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
+
+    </ProgressBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have account?"
+        android:textColor="@color/colorWhite"
+        android:onClick="Already_have_account">
+
+    </TextView>
+
+
+
+</LinearLayout>
