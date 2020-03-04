@@ -4,6 +4,7 @@ public class BookInformation {
 
     public String bid, bname, bwritter, bdescription, bcatagory;
 
+
     public BookInformation() {
     }
 

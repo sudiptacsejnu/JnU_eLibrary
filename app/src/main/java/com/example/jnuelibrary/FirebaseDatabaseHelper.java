@@ -29,7 +29,7 @@ public class FirebaseDatabaseHelper {
         mDatabase = FirebaseDatabase.getInstance();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        mReferenceBooks = mDatabase.getReference("Users").child(uId);
+        mReferenceBooks = mDatabase.getReference("Books");
     }
 
     public void readBooks(final DataStatus dataStatus){

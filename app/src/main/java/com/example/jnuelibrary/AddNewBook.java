@@ -38,7 +38,7 @@ public class AddNewBook extends AppCompatActivity {
 
         progressBarANB = findViewById(R.id.ProgressbarANB);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Books");
     }
 
     public void Submit(View view) {
@@ -73,11 +73,11 @@ public class AddNewBook extends AppCompatActivity {
             //Log.d("SUDIPTA", bookInformation.toString());
             //databaseReference.child(uId+"/"+bookID).setValue(bookInformation);
 
-        databaseReference.child(uId+"/"+bookID)
+        databaseReference.child(bookID)
                 .setValue(bookInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                progressBarANB.setVisibility(View.GONE);
+                progressBarANB.setVisibility(View.INVISIBLE);
                 if (task.isSuccessful()) {
                     Toast.makeText(AddNewBook.this, "Book Information saved Successfully", Toast.LENGTH_SHORT).show();
                      bookIDET.setText("");
