@@ -15,6 +15,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context context;
     private List<BookInformation> bookInformations;
+    private OnItemClickListener listener;
 
     public MyAdapter(Context context, List<BookInformation> bookInformations) {
         this.context = context;
@@ -44,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return bookInformations.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView titleTV;
         private TextView writterTV;
@@ -59,6 +60,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             writterTV = itemView.findViewById(R.id.writerTV);
             catagoryTV = itemView.findViewById(R.id.catagoryTV);
             descriptionTV = itemView.findViewById(R.id.descriptionTV);
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if(listener!=null)
+            {
+                int position = getAdapterPosition();
+
+                if(position!=RecyclerView.NO_POSITION)
+                {
+                    listener.onItemClick(position);
+                }
+            }
+        }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+
+        this.listener = listener;
+
     }
 }

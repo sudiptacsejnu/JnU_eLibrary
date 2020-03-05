@@ -58,6 +58,20 @@ public class SeeBookList extends AppCompatActivity {
 
                 myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
                 mRecyclerView.setAdapter(myAdapter);
+
+                myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        String bookID = bookInformationList.get(position).getBid();
+                        String bookName = bookInformationList.get(position).getBname();
+
+                        Toast.makeText(SeeBookList.this, bookName+" is selected", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(SeeBookList.this, BookDetails.class);
+                        intent.putExtra("bookID",bookID);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -89,33 +103,6 @@ public class SeeBookList extends AppCompatActivity {
                 }
             }
         });
-
-
-
-        /*mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_Book);
-        new FirebaseDatabaseHelper().readBooks(new FirebaseDatabaseHelper.DataStatus() {
-            @Override
-            public void DataIsLoaded(List<BookInformation> books, List<String> keys) {
-                new RecyclerView_Config().setConfig(mRecyclerView, SeeBookList.this,
-                        books, keys);
-            }
-
-            @Override
-            public void DataIsInserted() {
-
-            }
-
-            @Override
-            public void DataIsUpdated() {
-
-            }
-
-            @Override
-            public void DataIsDeleted() {
-
-            }
-        });*/
-
 
     }
 
