@@ -5,13 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SeeBookList"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/wallpaper">
 
-    <androidx.appcompat.widget.SearchView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/search_see_book_list"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:hint="Search"
+        android:textAllCaps="false">
 
-    </androidx.appcompat.widget.SearchView>
+    </EditText>
 
 
     <androidx.recyclerview.widget.RecyclerView

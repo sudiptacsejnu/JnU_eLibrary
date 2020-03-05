@@ -1,5 +1,6 @@
 package com.example.jnuelibrary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,16 +10,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseDatabase fdatabase;
-    TextView userNameTV;
+    TextView userNameTV, studentIDTV;
+    DatabaseReference databaseReference;
 
     private long backPressedTime;
     private Toast backToast;
+    private String uID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fdatabase = FirebaseDatabase.getInstance();
+        uID = fAuth.getUid();
 
         if(fAuth.getCurrentUser().getEmail().matches("admin@gmail.com")){
 
@@ -39,8 +47,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         userNameTV = findViewById(R.id.userNameTV);
+        studentIDTV = findViewById(R.id.studentIDTV);
 
-        userNameTV.setText(fAuth.getCurrentUser().getEmail());
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String userName = dataSnapshot.child(uID).child("name").getValue().toString();
+                String studentID = dataSnapshot.child(uID).child("studentID").getValue().toString();
+
+                userNameTV.setText(userName);
+                studentIDTV.setText(studentID);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
     }
