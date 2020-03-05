@@ -121,11 +121,72 @@ public class SeeBookList extends AppCompatActivity {
 
     private void search(String toString)
     {
-        Query query = databaseReference.orderByChild("bname")
+        //for bname
+        Query querybname = databaseReference.orderByChild("bname")
                 .startAt(toString)
                 .endAt(toString + "\uf8ff");
 
-        query.addValueEventListener(new ValueEventListener() {
+        querybname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren())
+                {
+                    bookInformationList.clear();
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        final BookInformation bookInformation = dataSnapshot1.getValue(BookInformation.class);
+                        bookInformationList.add(bookInformation);
+                    }
+
+                    myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
+                    mRecyclerView.setAdapter(myAdapter);
+                    myAdapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //for bwritter
+        Query querybwritter = databaseReference.orderByChild("bwritter")
+                .startAt(toString)
+                .endAt(toString + "\uf8ff");
+
+        querybwritter.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren())
+                {
+                    bookInformationList.clear();
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
+                    {
+                        final BookInformation bookInformation = dataSnapshot1.getValue(BookInformation.class);
+                        bookInformationList.add(bookInformation);
+                    }
+
+                    myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
+                    mRecyclerView.setAdapter(myAdapter);
+                    myAdapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //for bcatagory
+        Query querybcatagory = databaseReference.orderByChild("bcatagory")
+                .startAt(toString)
+                .endAt(toString + "\uf8ff");
+
+        querybcatagory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChildren())
