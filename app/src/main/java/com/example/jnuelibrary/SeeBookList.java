@@ -128,6 +128,20 @@ public class SeeBookList extends AppCompatActivity {
                     myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
                     mRecyclerView.setAdapter(myAdapter);
                     myAdapter.notifyDataSetChanged();
+
+                    myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            String bookID = bookInformationList.get(position).getBid();
+                            String bookName = bookInformationList.get(position).getBname();
+
+                            Toast.makeText(SeeBookList.this, bookName+" is selected", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(SeeBookList.this, BookDetails.class);
+                            intent.putExtra("bookID",bookID);
+                            startActivity(intent);
+                        }
+                    });
                 }
 
             }
@@ -158,6 +172,20 @@ public class SeeBookList extends AppCompatActivity {
                     myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
                     mRecyclerView.setAdapter(myAdapter);
                     myAdapter.notifyDataSetChanged();
+
+                    myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            String bookID = bookInformationList.get(position).getBid();
+                            String bookName = bookInformationList.get(position).getBname();
+
+                            Toast.makeText(SeeBookList.this, bookName+" is selected", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(SeeBookList.this, BookDetails.class);
+                            intent.putExtra("bookID",bookID);
+                            startActivity(intent);
+                        }
+                    });
                 }
 
             }
@@ -188,6 +216,20 @@ public class SeeBookList extends AppCompatActivity {
                     myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
                     mRecyclerView.setAdapter(myAdapter);
                     myAdapter.notifyDataSetChanged();
+
+                    myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            String bookID = bookInformationList.get(position).getBid();
+                            String bookName = bookInformationList.get(position).getBname();
+
+                            Toast.makeText(SeeBookList.this, bookName+" is selected", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(SeeBookList.this, BookDetails.class);
+                            intent.putExtra("bookID",bookID);
+                            startActivity(intent);
+                        }
+                    });
                 }
 
             }

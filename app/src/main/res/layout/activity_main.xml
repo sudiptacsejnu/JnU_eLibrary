@@ -9,21 +9,35 @@
     android:background="@drawable/wallpaper">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Admin Panel"
+        android:textColor="@color/colorWhite"
+        android:textStyle="italic"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:padding="10dp">
+
+    </TextView>
+
+    <TextView
         android:id="@+id/userNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/colorWhite">
+        android:textColor="@color/colorWhite"
+        android:padding="5dp">
 
     </TextView>
     <TextView
         android:id="@+id/studentIDTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="@color/colorWhite">
+        android:textColor="@color/colorWhite"
+        android:padding="5dp">
 
     </TextView>
 

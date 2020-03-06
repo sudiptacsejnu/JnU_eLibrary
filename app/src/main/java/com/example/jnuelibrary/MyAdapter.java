@@ -37,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.titleTV.setText(bookInformation.getBname());
         holder.writterTV.setText(bookInformation.getBwritter());
         holder.catagoryTV.setText(bookInformation.getBcatagory());
-        holder.descriptionTV.setText(bookInformation.getBdescription());
+        //holder.descriptionTV.setText(bookInformation.getBdescription());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         private TextView titleTV;
         private TextView writterTV;
         private TextView catagoryTV;
-        private TextView descriptionTV;
+        //private TextView descriptionTV;
 
         public MyViewHolder(@NonNull View itemView) {
 
@@ -59,7 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             titleTV = itemView.findViewById(R.id.titleTV);
             writterTV = itemView.findViewById(R.id.writerTV);
             catagoryTV = itemView.findViewById(R.id.catagoryTV);
-            descriptionTV = itemView.findViewById(R.id.descriptionTV);
+            //descriptionTV = itemView.findViewById(R.id.descriptionTV);
 
             itemView.setOnClickListener(this);
         }

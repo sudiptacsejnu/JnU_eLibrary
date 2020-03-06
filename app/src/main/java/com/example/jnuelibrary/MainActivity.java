@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         userNameTV = findViewById(R.id.userNameTV);
         studentIDTV = findViewById(R.id.studentIDTV);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
 

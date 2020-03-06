@@ -9,64 +9,76 @@
     android:orientation="vertical"
     android:background="@drawable/wallpaper">
 
-    <EditText
-        android:id="@+id/NameET"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Name"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:padding="12dp">
-    </EditText>
-    <EditText
-        android:id="@+id/StudentIDET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Student ID"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:padding="12dp">
-    </EditText>
-    <EditText
-        android:id="@+id/EmailET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Email"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:padding="12dp"
-        android:inputType="textEmailAddress">
-    </EditText>
-    <EditText
-        android:id="@+id/PasswordET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Password"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:padding="12dp">
-    </EditText>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/ContactET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:hint="Contact no"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:padding="12dp"
-        android:inputType="phone">
-    </EditText>
+            <EditText
+                android:id="@+id/NameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Name"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:padding="12dp">
+            </EditText>
+            <EditText
+                android:id="@+id/StudentIDET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Student ID"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:padding="12dp">
+            </EditText>
+            <EditText
+                android:id="@+id/EmailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Email"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:padding="12dp"
+                android:inputType="textEmailAddress">
+            </EditText>
+            <EditText
+                android:id="@+id/PasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Password"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:padding="12dp">
+            </EditText>
+
+            <EditText
+                android:id="@+id/ContactET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Contact no"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:padding="12dp"
+                android:inputType="phone">
+            </EditText>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <Button
         android:layout_width="200dp"
