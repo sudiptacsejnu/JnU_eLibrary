@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewBook extends AppCompatActivity {
 
-    EditText bookNameET, bookIDET, bookWriterET,bookDescriptionET, bookCatagoryET;
+    EditText bookNameET, bookIDET, bookWriterET,bookDescriptionET, bookCatagoryET, bookQuantityET;
     ProgressBar progressBarANB;
     DatabaseReference databaseReference;
     String uId;
@@ -35,6 +35,7 @@ public class AddNewBook extends AppCompatActivity {
         bookWriterET = findViewById(R.id.bookWriterET);
         bookCatagoryET = findViewById(R.id.bookCatagoryET);
         bookDescriptionET = findViewById(R.id.bookDescriptionET);
+        bookQuantityET = findViewById(R.id.bookQuantityET);
 
         progressBarANB = findViewById(R.id.ProgressbarANB);
 
@@ -60,15 +61,21 @@ public class AddNewBook extends AppCompatActivity {
         else if(bookCatagoryET.getText().toString().trim().isEmpty()){
             bookCatagoryET.setError("Required");
         }
+        else if(bookQuantityET.getText().toString().trim().isEmpty()){
+            bookQuantityET.setError("Required");
+        }
         else {
             final String bookID = bookIDET.getText().toString().trim();
             final String bookName = bookNameET.getText().toString().trim();
             final String bookWritter = bookWriterET.getText().toString().trim();
             final String bookDescription = bookDescriptionET.getText().toString().trim();
             final String bookCatagory = bookCatagoryET.getText().toString().trim();
+            final String bookQuantity = bookQuantityET.getText().toString().trim();
 
 
-            BookInformation bookInformation = new BookInformation(bookID,bookName, bookWritter, bookDescription, bookCatagory);
+
+
+            BookInformation bookInformation = new BookInformation(bookID,bookName, bookWritter, bookDescription, bookCatagory, bookQuantity);
 
             //Log.d("SUDIPTA", bookInformation.toString());
             //databaseReference.child(uId+"/"+bookID).setValue(bookInformation);
@@ -85,6 +92,7 @@ public class AddNewBook extends AppCompatActivity {
                      bookWriterET.setText("");
                      bookDescriptionET.setText("");
                      bookCatagoryET.setText("");
+                     bookQuantityET.setText("");
                 }
                 else {
                     //display a failure message

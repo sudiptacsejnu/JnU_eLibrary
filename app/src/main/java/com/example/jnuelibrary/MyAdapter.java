@@ -36,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         BookInformation bookInformation = bookInformations.get(position);
         holder.titleTV.setText(bookInformation.getBname());
         holder.writterTV.setText(bookInformation.getBwritter());
-        holder.catagoryTV.setText(bookInformation.getBcatagory());
+        holder.categoryTV.setText(bookInformation.getBcategory());
         //holder.descriptionTV.setText(bookInformation.getBdescription());
     }
 
@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         private TextView titleTV;
         private TextView writterTV;
-        private TextView catagoryTV;
+        private TextView categoryTV;
         //private TextView descriptionTV;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -58,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             titleTV = itemView.findViewById(R.id.titleTV);
             writterTV = itemView.findViewById(R.id.writerTV);
-            catagoryTV = itemView.findViewById(R.id.catagoryTV);
+            categoryTV = itemView.findViewById(R.id.categoryTV);
             //descriptionTV = itemView.findViewById(R.id.descriptionTV);
 
             itemView.setOnClickListener(this);

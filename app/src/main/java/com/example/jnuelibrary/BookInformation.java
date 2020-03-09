@@ -2,18 +2,19 @@ package com.example.jnuelibrary;
 
 public class BookInformation {
 
-    public String bid, bname, bwritter, bdescription, bcatagory;
+    public String bid, bname, bwritter, bdescription, bcategory, bquantity;
 
 
     public BookInformation() {
     }
 
-    public BookInformation(String bid, String bname, String bwritter, String bdescription, String bcatagory) {
+    public BookInformation(String bid, String bname, String bwritter, String bdescription, String bcategory, String bquantity) {
         this.bid = bid;
         this.bname = bname;
         this.bwritter = bwritter;
         this.bdescription = bdescription;
-        this.bcatagory = bcatagory;
+        this.bcategory = bcategory;
+        this.bquantity = bquantity;
     }
 
     public String getBid() {
@@ -48,11 +49,19 @@ public class BookInformation {
         this.bdescription = bdescription;
     }
 
-    public String getBcatagory() {
-        return bcatagory;
+    public String getBcategory() {
+        return bcategory;
     }
 
-    public void setBcatagory(String bcatagory) {
-        this.bcatagory = bcatagory;
+    public void setBcategory(String bcategory) {
+        this.bcategory = bcategory;
+    }
+
+    public String getBquantity() {
+        return bquantity;
+    }
+
+    public void setBquantity(String bquantity) {
+        this.bquantity = bquantity;
     }
 }
