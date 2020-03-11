@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookDetails"></activity>
+        <activity android:name=".BorrowBook"></activity>
+        <activity android:name=".BookDetails" />
         <activity android:name=".SeeBookList" />
         <activity android:name=".AddNewBook" />
         <activity android:name=".Registration" />

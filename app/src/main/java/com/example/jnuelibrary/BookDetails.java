@@ -3,6 +3,7 @@ package com.example.jnuelibrary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class BookDetails extends AppCompatActivity {
     TextView bookNameDetailsTV, bookWritterDetailsTV, bookCategoryDetailsTV, bookDescriptionDetailsTV, bookQuantityDetailsTV;
     DatabaseReference databaseReference;
     private String bookID;
+    private int bookQuantityCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class BookDetails extends AppCompatActivity {
                 String bookDescription = dataSnapshot.child(bookID).child("bdescription").getValue().toString();
                 String bookQuantity = dataSnapshot.child(bookID).child("bquantity").getValue().toString();
 
+                bookQuantityCount = Integer.parseInt(bookQuantity);
+
                 bookNameDetailsTV.setText(bookName);
                 bookWritterDetailsTV.setText(bookWritter);
                 bookCategoryDetailsTV.setText(bookCategory);
@@ -60,6 +64,20 @@ public class BookDetails extends AppCompatActivity {
     }
 
     public void BookBorrow(View view) {
-        Toast.makeText(this, "Under Development...!", Toast.LENGTH_SHORT).show();
+
+        if(bookQuantityCount>0)
+        {
+            Intent intent = new Intent(BookDetails.this, BorrowBook.class);
+            intent.putExtra("borrowBookID",bookID);
+            intent.putExtra("borrowBookQuantity",bookQuantityCount);
+            startActivity(intent);
+        }
+
+        else
+        {
+            Toast.makeText(this, "Stock Finished.", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
