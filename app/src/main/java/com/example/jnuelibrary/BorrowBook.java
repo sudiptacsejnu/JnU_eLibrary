@@ -3,6 +3,7 @@ package com.example.jnuelibrary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -81,10 +82,11 @@ public class BorrowBook extends AppCompatActivity {
     }
 
     public void BookBorrowConform(View view) {
-        Toast.makeText(this, "hello...", Toast.LENGTH_SHORT).show();
+
+        int borrowBookQuantityUpdate = borrowBookQuantity-1;
 
         databaseReferenceBook.child(borrowBookID)
-                .child("bquantity").setValue(borrowBookQuantity-1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                .child("bquantity").setValue(Integer.toString(borrowBookQuantityUpdate)).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -97,6 +99,10 @@ public class BorrowBook extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(BorrowBook.this, "Book Information saved Successfully", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(BorrowBook.this, BookDetails.class);
+                                intent.putExtra("bookID",borrowBookID);
+                                startActivity(intent);
 
                             }
                             else {
