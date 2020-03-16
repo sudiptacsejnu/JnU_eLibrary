@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,7 @@ public class SeeBookList extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     EditText searchSeeBookList;
+    ProgressBar seeBookListPB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class SeeBookList extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recyclerview_Book);
         searchSeeBookList = findViewById(R.id.search_see_book_list);
+        seeBookListPB = findViewById(R.id.seeBookListPB);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -55,6 +59,8 @@ public class SeeBookList extends AppCompatActivity {
                     BookInformation bookInformation = dataSnapshot1.getValue(BookInformation.class);
                     bookInformationList.add(bookInformation);
                 }
+
+                seeBookListPB.setVisibility(View.GONE);
 
                 myAdapter = new MyAdapter(SeeBookList.this, bookInformationList);
                 mRecyclerView.setAdapter(myAdapter);
@@ -197,7 +203,7 @@ public class SeeBookList extends AppCompatActivity {
         });
 
         //for bcatagory
-        Query querybcatagory = databaseReference.orderByChild("bcatagory")
+        Query querybcatagory = databaseReference.orderByChild("bcategory")
                 .startAt(toString)
                 .endAt(toString + "\uf8ff");
 

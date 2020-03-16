@@ -25,6 +25,7 @@ public class BorrowBook extends AppCompatActivity {
     private String borrowBookName;
     private int borrowBookQuantity;
     private String uID;
+    private long maxid = 0;
     DatabaseReference databaseReferenceBook;
     DatabaseReference databaseReferenceUser;
     DatabaseReference databaseReferenceBorrow;
@@ -47,6 +48,20 @@ public class BorrowBook extends AppCompatActivity {
         databaseReferenceBook = FirebaseDatabase.getInstance().getReference("Books");
         databaseReferenceUser = FirebaseDatabase.getInstance().getReference("Users");
         databaseReferenceBorrow = FirebaseDatabase.getInstance().getReference("BorrowInformation");
+
+        databaseReferenceBorrow.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    maxid = (dataSnapshot.getChildrenCount());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         databaseReferenceUser.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,7 +108,7 @@ public class BorrowBook extends AppCompatActivity {
 
                     BorrowInformation borrowInformation = new BorrowInformation(borrowBookName, borrowBookID);
 
-                    databaseReferenceBorrow.child("01")
+                    databaseReferenceBorrow.child(String.valueOf(maxid))
                             .setValue(borrowInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
