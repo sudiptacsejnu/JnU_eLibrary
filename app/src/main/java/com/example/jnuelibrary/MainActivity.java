@@ -6,20 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth fAuth;
     FirebaseDatabase fdatabase;
-    TextView userNameTV, studentIDTV;
-    DatabaseReference databaseReference;
 
     private long backPressedTime;
     private Toast backToast;
@@ -30,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toolbar toolbar ;
-        //setSupportActionBar(toolbar);
 
         fAuth = FirebaseAuth.getInstance();
         fdatabase = FirebaseDatabase.getInstance();
@@ -46,31 +39,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
-        userNameTV = findViewById(R.id.userNameTV);
-        studentIDTV = findViewById(R.id.studentIDTV);
-
-        /*databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String userName = dataSnapshot.child(uID).child("name").getValue().toString();
-                String studentID = dataSnapshot.child(uID).child("studentID").getValue().toString();
-
-                userNameTV.setText(userName);
-                studentIDTV.setText(studentID);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
-
-
-
     }
 
     public void Logout(View view) {

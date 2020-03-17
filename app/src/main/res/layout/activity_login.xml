@@ -9,6 +9,12 @@
     android:orientation="vertical"
     android:background="@drawable/wallpaper">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/jnu_elibrary_logo">
+    </ImageView>
+
     <EditText
         android:id="@+id/EmailIDEt"
         android:layout_width="match_parent"
