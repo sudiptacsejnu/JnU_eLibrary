@@ -72,4 +72,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AddNewBook.class);
         startActivity(intent);
     }
+
+    public void SeeBorrowList(View view) {
+        Intent intent = new Intent(MainActivity.this, SeeBorrowList.class);
+        startActivity(intent);
+    }
+
+    public void SeeUserList(View view) {
+        Intent intent = new Intent(MainActivity.this, SeeUserList.class);
+        startActivity(intent);
+    }
 }
