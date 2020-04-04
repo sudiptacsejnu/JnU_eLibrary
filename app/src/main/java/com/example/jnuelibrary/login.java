@@ -37,6 +37,7 @@ public class login extends AppCompatActivity {
         if(fAuth.getCurrentUser() != null){
             Intent intent = new Intent(login.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SeeUserList"></activity>
+        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".SeeUserList" />
         <activity android:name=".SeeBorrowList" />
         <activity android:name=".BorrowBook" />
         <activity android:name=".BookDetails" />
@@ -26,10 +27,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- </intent-filter> -->
         </activity>
+
+        <receiver android:name=".ReminderBroadcast" />
     </application>
 
 </manifest>

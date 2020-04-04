@@ -3,7 +3,12 @@ package com.example.jnuelibrary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,6 +39,8 @@ public class BorrowBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrow_book);
+
+        createNotificationChannel();
 
         borrowUserNameTV = findViewById(R.id.borrowUserNameTV);
         borrowBookNameTV = findViewById(R.id.borrowBookNameTV);
@@ -115,6 +122,20 @@ public class BorrowBook extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(BorrowBook.this, "Book Information saved Successfully", Toast.LENGTH_SHORT).show();
 
+                                //alarm notification
+                                Intent alarmIntent = new Intent(BorrowBook.this, ReminderBroadcast.class);
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(BorrowBook.this, 0, alarmIntent, 0);
+
+                                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                                long timeAtButtonClick = System.currentTimeMillis();
+
+                                long tenSecondsInMillis = 1000 * 10;
+
+                                alarmManager.set(AlarmManager.RTC_WAKEUP,
+                                        timeAtButtonClick + tenSecondsInMillis,
+                                        pendingIntent);
+
                                 Intent intent = new Intent(BorrowBook.this, BookDetails.class);
                                 intent.putExtra("bookID",borrowBookID);
                                 startActivity(intent);
@@ -137,5 +158,18 @@ public class BorrowBook extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "ReminderChannel";
+            String description = "Channel for Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notify", name, importance );
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
