@@ -27,6 +27,11 @@ public class SeeBorrowList extends AppCompatActivity {
     private MyAdapterBorrow myAdapterBorrow;
     private List<BorrowInformation> borrowInformationList;
     DatabaseReference databaseReferenceBorrow;
+    DatabaseReference databaseReference;
+
+    private String bookID;
+    private int bookQuantityCount;
+    private String bookQuantity;
 
     EditText searchSeeBorrowList;
     ProgressBar seeBorrowListPB;
@@ -42,6 +47,7 @@ public class SeeBorrowList extends AppCompatActivity {
 
         mRecyclerViewBorrow.setHasFixedSize(true);
         mRecyclerViewBorrow.setLayoutManager(new LinearLayoutManager(this));
+
 
         borrowInformationList = new ArrayList<>();
         databaseReferenceBorrow = FirebaseDatabase.getInstance().getReference("BorrowInformation");
@@ -63,13 +69,42 @@ public class SeeBorrowList extends AppCompatActivity {
                     @Override
                     public void onItemClick(int position) {
                         String borrowBookID = borrowInformationList.get(position).getBookID();
-                        String borrowUserName = borrowInformationList.get(position).getUserName();
+                        //Toast.makeText(SeeBorrowList.this, borrowBookID, Toast.LENGTH_LONG).show();
 
-                        Toast.makeText(SeeBorrowList.this, borrowBookID + " is selected", Toast.LENGTH_SHORT).show();
+                        //String borrowUserName = borrowInformationList.get(position).getUserName();
 
-                        Intent intent = new Intent(SeeBorrowList.this, SeeBorrowList.class);
-                        intent.putExtra("borrowBookID", borrowBookID);
-                        startActivity(intent);
+                        databaseReference = FirebaseDatabase.getInstance().getReference("Books");
+
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                bookQuantity = dataSnapshot.child(borrowBookID).child("bquantity").getValue().toString();
+
+                                bookQuantityCount = Integer.parseInt(bookQuantity);
+                                //Toast.makeText(SeeBorrowList.this, String.valueOf(bookQuantityCount), Toast.LENGTH_SHORT).show();
+
+                                //Toast.makeText(SeeBorrowList.this, borrowBookID + " is selected", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(SeeBorrowList.this, ReturnBook.class);
+                                intent.putExtra("returnBookID", borrowBookID);
+                                intent.putExtra("returnBookQuantity",bookQuantityCount);
+                                startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                        /*Toast.makeText(SeeBorrowList.this, borrowBookID + " is selected", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(SeeBorrowList.this, ReturnBook.class);
+                        intent.putExtra("returnBookID", borrowBookID);
+                        intent.putExtra("returnBookQuantity",bookQuantityCount);
+                        startActivity(intent);*/
                     }
                 });
             }
