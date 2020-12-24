@@ -27,9 +27,10 @@ public class ReturnBook extends AppCompatActivity {
 
     TextView returnUserNameTV, returnBookNameTV;
     private String returnBookID;
-    private String returnBookName;
-    private int bookQuantity;
     private String returnUserName;
+    private int bookQuantity;
+    private int returnStatus = 1;
+    private String UserName;
 
     private String uID;
     private long maxid = 0;
@@ -43,12 +44,12 @@ public class ReturnBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_return_book);
 
-        returnUserNameTV = findViewById(R.id.returnBookNameTV);
-        returnBookNameTV = findViewById(R.id.returnUserNameTV);
+        returnUserNameTV = findViewById(R.id.returnUserNameTV);
+        returnBookNameTV = findViewById(R.id.returnBookNameTV);
 
         returnBookID = getIntent().getStringExtra("returnBookID");
         bookQuantity = getIntent().getIntExtra("returnBookQuantity",0);
-        returnUserName = getIntent().getStringExtra("returnBookUserName");
+        UserName = getIntent().getStringExtra("returnBookUserName");
         //bookQuantityInt = Integer.parseInt(bookQuantity);
         //Toast.makeText(this, bookQuantity, Toast.LENGTH_SHORT).show();
 
@@ -75,9 +76,10 @@ public class ReturnBook extends AppCompatActivity {
         databaseReferenceUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                returnBookName = dataSnapshot.child(uID).child("name").getValue().toString();
+                //returnUserName = dataSnapshot.child(uID).child("name").getValue().toString();
+                returnUserName = UserName;
 
-                returnUserNameTV.setText(returnBookName);
+                returnUserNameTV.setText(returnUserName);
 
 
             }
@@ -116,7 +118,7 @@ public class ReturnBook extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
 
-                    ReturnInformation returnInformation = new ReturnInformation(returnBookName, returnBookID);
+                    ReturnInformation returnInformation = new ReturnInformation(returnUserName, returnBookID);
 
                     databaseReferenceReturn.child(String.valueOf(maxid))
                             .setValue(returnInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -134,12 +136,13 @@ public class ReturnBook extends AppCompatActivity {
                                             BorrowInformation borrowInformation = dataSnapshot1.getValue(BorrowInformation.class);
 
                                             if (borrowInformation.getBookID().matches(returnBookID)) {
-                                                Toast.makeText(ReturnBook.this, dataSnapshot1.getRef().getKey().toString(), Toast.LENGTH_SHORT).show();
-                                                databaseReferenceBorrow.child(dataSnapshot1.getRef().getKey().toString())
-                                                        .child("status").setValue(1);
+                                                if(borrowInformation.getUserName().matches(returnUserName)) {
+                                                    databaseReferenceBorrow.child(dataSnapshot1.getRef().getKey().toString())
+                                                            .child("status").setValue(returnStatus);
+
+                                                }
                                             }
                                         }
-
                                     }
 
                                     @Override
@@ -148,13 +151,13 @@ public class ReturnBook extends AppCompatActivity {
                                     }
                                 });
 
-                                Intent intent = new Intent(ReturnBook.this, SeeBorrowList.class);
-                                //intent.putExtra("bookID",returnBookID);
+                                Intent intent = new Intent(ReturnBook.this, MainActivity.class);
                                 startActivity(intent);
+                                finish();
 
                             }
                             else {
-                                //display a failure message
+
                                 Toast.makeText(ReturnBook.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
 

@@ -137,9 +137,10 @@ public class BorrowBook extends AppCompatActivity {
                                         timeAtButtonClick + tenSecondsInMillis,
                                         pendingIntent);
 
-                                Intent intent = new Intent(BorrowBook.this, BookDetails.class);
+                                Intent intent = new Intent(BorrowBook.this, SeeBookList.class);
                                 intent.putExtra("bookID",borrowBookID);
                                 startActivity(intent);
+                                finish();
 
                             }
                             else {
