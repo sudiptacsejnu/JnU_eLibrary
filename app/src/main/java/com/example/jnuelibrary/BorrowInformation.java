@@ -3,13 +3,15 @@ package com.example.jnuelibrary;
 public class BorrowInformation {
 
     public String userName, bookID;
+    public int status;
 
     public BorrowInformation() {
     }
 
-    public BorrowInformation(String userName, String bookID) {
+    public BorrowInformation(String userName, String bookID, int status) {
         this.userName = userName;
         this.bookID = bookID;
+        this.status = status;
     }
 
     public String getUserName() {
@@ -26,5 +28,13 @@ public class BorrowInformation {
 
     public void setBookID(String bookID) {
         this.bookID = bookID;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -29,6 +29,7 @@ public class BorrowBook extends AppCompatActivity {
     private String borrowBookID;
     private String borrowBookName;
     private int borrowBookQuantity;
+    private int initStatus = 0;
     private String uID;
     private long maxid = 0;
     DatabaseReference databaseReferenceBook;
@@ -113,7 +114,7 @@ public class BorrowBook extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
 
-                    BorrowInformation borrowInformation = new BorrowInformation(borrowBookName, borrowBookID);
+                    BorrowInformation borrowInformation = new BorrowInformation(borrowBookName, borrowBookID,initStatus);
 
                     databaseReferenceBorrow.child(String.valueOf(maxid))
                             .setValue(borrowInformation).addOnCompleteListener(new OnCompleteListener<Void>() {

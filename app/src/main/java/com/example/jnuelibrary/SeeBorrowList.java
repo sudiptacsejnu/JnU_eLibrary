@@ -57,7 +57,9 @@ public class SeeBorrowList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     BorrowInformation borrowInformation = dataSnapshot1.getValue(BorrowInformation.class);
-                    borrowInformationList.add(borrowInformation);
+                    if(borrowInformation.getStatus() == 0) {
+                        borrowInformationList.add(borrowInformation);
+                    }
                 }
 
                 seeBorrowListPB.setVisibility(View.GONE);
@@ -69,9 +71,7 @@ public class SeeBorrowList extends AppCompatActivity {
                     @Override
                     public void onItemClick(int position) {
                         String borrowBookID = borrowInformationList.get(position).getBookID();
-                        //Toast.makeText(SeeBorrowList.this, borrowBookID, Toast.LENGTH_LONG).show();
-
-                        //String borrowUserName = borrowInformationList.get(position).getUserName();
+                        String borrowUserName = borrowInformationList.get(position).getUserName();
 
                         databaseReference = FirebaseDatabase.getInstance().getReference("Books");
 
@@ -88,6 +88,7 @@ public class SeeBorrowList extends AppCompatActivity {
                                 Intent intent = new Intent(SeeBorrowList.this, ReturnBook.class);
                                 intent.putExtra("returnBookID", borrowBookID);
                                 intent.putExtra("returnBookQuantity",bookQuantityCount);
+                                intent.putExtra("returnBookUserName",borrowUserName);
                                 startActivity(intent);
 
                             }

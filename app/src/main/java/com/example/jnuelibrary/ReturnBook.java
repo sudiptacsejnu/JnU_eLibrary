@@ -20,19 +20,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReturnBook extends AppCompatActivity {
 
     TextView returnUserNameTV, returnBookNameTV;
     private String returnBookID;
     private String returnBookName;
     private int bookQuantity;
-    private int bookQuantityInt;
+    private String returnUserName;
 
     private String uID;
     private long maxid = 0;
     DatabaseReference databaseReferenceBook;
     DatabaseReference databaseReferenceUser;
     DatabaseReference databaseReferenceReturn;
+    DatabaseReference databaseReferenceBorrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class ReturnBook extends AppCompatActivity {
 
         returnBookID = getIntent().getStringExtra("returnBookID");
         bookQuantity = getIntent().getIntExtra("returnBookQuantity",0);
+        returnUserName = getIntent().getStringExtra("returnBookUserName");
         //bookQuantityInt = Integer.parseInt(bookQuantity);
         //Toast.makeText(this, bookQuantity, Toast.LENGTH_SHORT).show();
 
@@ -119,6 +124,29 @@ public class ReturnBook extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(ReturnBook.this, "Book Information saved Successfully", Toast.LENGTH_SHORT).show();
+
+                                databaseReferenceBorrow = FirebaseDatabase.getInstance().getReference("BorrowInformation");
+
+                                databaseReferenceBorrow.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                            BorrowInformation borrowInformation = dataSnapshot1.getValue(BorrowInformation.class);
+
+                                            if (borrowInformation.getBookID().matches(returnBookID)) {
+                                                Toast.makeText(ReturnBook.this, dataSnapshot1.getRef().getKey().toString(), Toast.LENGTH_SHORT).show();
+                                                databaseReferenceBorrow.child(dataSnapshot1.getRef().getKey().toString())
+                                                        .child("status").setValue(1);
+                                            }
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
 
                                 Intent intent = new Intent(ReturnBook.this, SeeBorrowList.class);
                                 //intent.putExtra("bookID",returnBookID);
