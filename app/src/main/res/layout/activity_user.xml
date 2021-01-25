@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:background="@drawable/adminpanel_header"
+            android:background="@drawable/user_panel_header"
             android:padding="10dp"
             android:textAlignment="center">
 
