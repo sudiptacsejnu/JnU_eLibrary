@@ -89,6 +89,24 @@
         </Button>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/about"
+            android:elevation="8dp"
+            android:onClick="About">
+
+        </Button>
+
+    </LinearLayout>
 
 
     </LinearLayout>

@@ -72,4 +72,9 @@ public class UserActivity extends AppCompatActivity {
 
         backPressedTime = System.currentTimeMillis();
     }
+
+    public void About(View view) {
+        Intent intent = new Intent(UserActivity.this, About.class);
+        startActivity(intent);
+    }
 }
