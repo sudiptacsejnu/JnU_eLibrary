@@ -20,6 +20,63 @@
 
     </TextView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search by: "
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        >
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/searchAnyBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Any"
+            android:background="@color/colorWhite"
+            android:layout_margin="3dp"
+            android:onClick="SearchByAny">
+
+        </Button>
+        <Button
+            android:id="@+id/searchNameBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:background="@color/colorWhite"
+            android:layout_margin="3dp"
+            android:onClick="SearchByName">
+
+        </Button>
+        <Button
+            android:id="@+id/searchCategoryBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:onClick="SearchByCategory"
+            android:background="@color/colorWhite"
+            android:layout_margin="3dp">
+
+        </Button>
+        <Button
+            android:id="@+id/searchWriterBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Writer"
+            android:background="@color/colorWhite"
+            android:layout_margin="3dp"
+            android:onClick="SearchByWriter">
+
+        </Button>
+    </LinearLayout>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,43 +84,11 @@
         android:textSize="20sp"
         android:textColor="@color/colorWhite"
         android:hint="Search"
-        android:textAllCaps="false">
+        android:textColorHint="@color/colorWhite"
+        android:textAllCaps="false"
+        >
 
     </EditText>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search by: "
-            android:textColor="@color/colorWhite"
-            android:textSize="18dp"
-            >
-
-        </TextView>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name">
-
-        </Button>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Catagory">
-
-        </Button>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Writter">
-
-        </Button>
-    </LinearLayout>
 
     <ProgressBar
         android:layout_width="match_parent"
@@ -75,8 +100,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerview_Book"/>
-
-
-
 
 </LinearLayout>
