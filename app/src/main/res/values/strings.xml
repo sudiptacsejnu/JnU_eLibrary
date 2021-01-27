@@ -1,16 +1,8 @@
 <resources>
     <string name="app_name">JnU eLibrary</string>
-    <string name="instructed_by">Instructed by: <br></br><br></br>
-        <b>Sajeeb Saha</b> <br></br>
-        Assistant Professor<br></br>
-        Dept. of C.S.E<br></br>
-        Jagannath University, Dhaka</string>
-    <string name="about_title">Jagannath University e-Library<br></br>
+    <string name="about_title">Jagannath University e-Library<br/>
     3rd year final Project</string>
-    <string name="sudipta">Sudipta Kumar Mondol<br></br>
-    B-160305027<br></br>
+    <string name="sudipta">Sudipta Kumar Mondol<br/>
+    B-160305027<br/>
     01521432185</string>
-    <string name="redwan">Redwan Ahmed<br></br><br></br>
-    B-160305032<br></br>
-    01700000000</string>
 </resources>
